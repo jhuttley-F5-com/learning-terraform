@@ -11,6 +11,12 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
+# Get default values, for cuioisity.
+data "aws_vpb" "default" {
+  default =true
+
+}
+
   owners = ["979382823631"] # Bitnami
 }
 
