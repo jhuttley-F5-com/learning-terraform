@@ -32,14 +32,14 @@ resource "aws_subnet" "my_subnet" {
   }
 }
 
-resource "security_group" "my" {
+resource "aws_security_group" "my" {
   name = "my_sg"
   description = "allow http"
   vpc_id = aws_vpc.my_vpc.id
 
 }
 
-resource "security_group_rule" "http_in" {
+resource "aws_security_group_rule" "http_in" {
   type = "ingress"
   from_port= "80"
   to_port= "80"
