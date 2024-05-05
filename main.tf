@@ -11,14 +11,15 @@ data "aws_ami" "app_ami" {
     values = ["hvm"]
   }
 
-# Get default values, for cuioisity.
-data "aws_vpc" "default" {
-  default =true
-
-}
-
   owners = ["979382823631"] # Bitnami
 }
+
+
+# Get default values, for curiosity.
+data "aws_vpc" "default" {
+  default =true
+}
+
 
 resource "aws_vpc" "my_vpc" {
   cidr_block = "172.16.0.0/16"
