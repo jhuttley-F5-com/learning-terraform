@@ -60,9 +60,9 @@ resource "aws_security_group_rule" "http_out" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t3.nano"
-#  subnet_id     = aws_subnet.my_subnet.id
+  subnet_id     = aws_subnet.my_subnet.id
 
-  vpc_security_group_ids = [aws_security_group_rule.http_in.id]
+  vpc_security_group_ids = [aws_security_group.my.id]
 
   tags = {
     Name = "HelloWorld"
