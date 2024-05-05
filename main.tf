@@ -44,6 +44,28 @@ resource "aws_subnet" "my_subnet" {
   }
 }
 
+# Creating Internet Gateway 
+resource "aws_internet_gateway" "mygateway" {
+  vpc_id = aws_vpc.my_vpc.id
+}
+
+# Creating Route Table for Public Subnet
+resource "aws_route_table" "rt" {
+    vpc_id = aws_vpc.my_vpc.id{
+        cidr_block = "0.0.0.0/0"
+        gateway_id = aws_internet_gateway.mygateway.id
+    }
+tags = {
+        Name = "Public Subnet Route Table"
+    }
+}
+
+resource "aws_route_table_association" "rt_associate_public" {
+    subnet_id = aws_subnet.my_subnet.id
+    route_table_id = aws_route_table.rt.id
+}
+
+
 resource "aws_security_group" "my" {
   name = "my_sg"
   description = "allow http"
