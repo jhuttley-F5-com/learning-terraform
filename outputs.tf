@@ -2,9 +2,8 @@
 #  value = aws_instance.web.ami
 #}
 
-output "instance_ami" {
-value = data.aws_ami.app_ami.id
-
+output "ami_id" {
+  value = data.aws_ami.app_ami.id
 }
 
 output "pvc_id" {
