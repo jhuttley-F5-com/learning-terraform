@@ -48,28 +48,22 @@ resource "aws_security_group" "my" {
   name = "my_sg"
   description = "allow http"
   vpc_id = aws_vpc.my_vpc.id
-  ingress_rules  =  ["https:443-tcp", "http-80-tcp"]
-  ingress_cidr_blocks = ["0.0.0.0/0"]
-  egress_rules  =  ["all-all"]
-  egress_cidr_blocks = ["0.0.0.0/0"]
 }
 
-resource "aws_security_group_rule" "http_in" {
-  type = "ingress"
-  from_port= "80"
-  to_port= "80"
-  protocol = "tcp"
-  cidr_blocks = ["0.0.0.0/0"]
-#  security_group_id =aws_security_group.my.id
-
+resource "aws_vpc_security_group_ingress_rule" "http_in" {
+  from_port  = "80"
+  to_port    = "80"
+  protocol   = "tcp"
+  cidr_ipv4  = "0.0.0.0/0"
+  security_group_id =aws_security_group.my.id
 }
-resource "aws_security_group_rule" "http_out" {
-  type        = "egress"
+
+resource "aws_vpc_security_group_egress_rule" "http_out" {
   from_port   = 0
   to_port     = 0
   protocol    = "-1"
-  cidr_blocks = ["0.0.0.0/0"]
-#  security_group_id = aws_security_group.my.id
+  cidr_ipv4   = "0.0.0.0/0"
+  security_group_id = aws_security_group.my.id
 }
 
 resource "aws_instance" "web" {
