@@ -50,7 +50,7 @@ resource "aws_security_group" "my" {
   vpc_id = aws_vpc.my_vpc.id
   ingress_rules=  ["https:443-tcp", "http-80-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"]
-  egress_rules  =  ['all-all"]
+  egress_rules  =  ["all-all"]
   egress_cidr_blocks = ["0.0.0.0/0"]
 }
 
