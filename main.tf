@@ -51,13 +51,14 @@ resource "aws_internet_gateway" "mygateway" {
 
 # Creating Route Table for Public Subnet
 resource "aws_route_table" "rt" {
-    vpc_id = aws_vpc.my_vpc.id{
+    vpc_id = aws_vpc.my_vpc.id
+    route = {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.mygateway.id
-    }
-tags = {
-        Name = "Public Subnet Route Table"
-    }
+    }  
+    tags = {
+            Name = "Public Subnet Route Table"
+        }
 }
 
 resource "aws_route_table_association" "rt_associate_public" {
