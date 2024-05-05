@@ -53,7 +53,7 @@ resource "aws_security_group" "my" {
 resource "aws_vpc_security_group_ingress_rule" "http_in" {
   from_port  = "80"
   to_port    = "80"
-  protocol   = "tcp"
+  ip_protocol   = "tcp"
   cidr_ipv4  = "0.0.0.0/0"
   security_group_id =aws_security_group.my.id
 }
@@ -61,7 +61,7 @@ resource "aws_vpc_security_group_ingress_rule" "http_in" {
 resource "aws_vpc_security_group_egress_rule" "http_out" {
   from_port   = 0
   to_port     = 0
-  protocol    = "-1"
+  ip_protocol    = "-1"
   cidr_ipv4   = "0.0.0.0/0"
   security_group_id = aws_security_group.my.id
 }
