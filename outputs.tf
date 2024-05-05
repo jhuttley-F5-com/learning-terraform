@@ -3,7 +3,7 @@
 #}
 
 output "pvc_id" {
-  value 
+  value = aws_vpc.my_vpc.id
 }
 #output "instance_arn" {
 #  value = aws_instance.web.arn
