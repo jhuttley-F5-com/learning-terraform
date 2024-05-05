@@ -32,11 +32,12 @@ resource "aws_subnet" "my_subnet" {
   }
 }
 
-#resource "aws_instance" "web" {
-#  ami           = data.aws_ami.app_ami.id
-#  instance_type = "t3.nano"
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.app_ami.id
+  instance_type = "t3.nano"
+  subnet_id     = aws_subnet.my_subnet.id
 
-#  tags = {
-#    Name = "HelloWorld"
-#  }
-#}
+  tags = {
+    Name = "HelloWorld"
+  }
+}
