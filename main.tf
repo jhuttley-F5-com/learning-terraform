@@ -12,7 +12,7 @@ data "aws_ami" "app_ami" {
   }
 
 # Get default values, for cuioisity.
-data "aws_vpb" "default" {
+data "aws_vpc" "default" {
   default =true
 
 }
