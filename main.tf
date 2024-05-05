@@ -50,12 +50,14 @@ resource "aws_security_group_rule" "http_in" {
 }
 
 
-#resource "aws_instance" "web" {
-#  ami           = data.aws_ami.app_ami.id
-#  instance_type = "t3.nano"
-#  subnet_id     = aws_subnet.my_subnet.id
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.app_ami.id
+  instance_type = "t3.nano"
+  subnet_id     = aws_subnet.my_subnet.id
 
-#  tags = {
-#    Name = "HelloWorld"
-#  }
-#}
+  vpc_security_group_ids = [aws_security_group_rule.http_in.id]
+
+  tags = {
+    Name = "HelloWorld"
+  }
+}
