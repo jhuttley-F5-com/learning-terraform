@@ -34,6 +34,10 @@ resource "aws_subnet" "my_subnet" {
   cidr_block        = "172.16.10.0/24"
   availability_zone = "us-west-2a"
 
+  #Only the default VPC sets this
+  map_public_ip_on_launch = "true"
+
+
   tags = {
     Name = "tf-example"
   }
