@@ -59,7 +59,7 @@ resource "aws_route_table" "rt" {
         }
 }
 
-# Add route to route table
+# Add route to route table. Cant do it in one or get Inappropriate value for attribute "route": set of object required.
 
 resource "aws_route" "my_route" {
         cidr_block = "0.0.0.0/0"
