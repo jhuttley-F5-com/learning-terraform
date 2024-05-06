@@ -62,7 +62,7 @@ resource "aws_route_table" "rt" {
 # Add route to route table. Cant do it in one or get Inappropriate value for attribute "route": set of object required.
 
 resource "aws_route" "my_route" {
-        cidr_block = "0.0.0.0/0"
+        destination_cidr_block = "0.0.0.0/0"
         route_table_id  = aws_route_table.rt.id
         gateway_id = aws_internet_gateway.mygateway.id
 }
