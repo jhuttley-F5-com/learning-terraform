@@ -20,6 +20,7 @@ data "aws_vpc" "default" {
   default =true
 }
 
+data "aws_availability_zones" "available" {}
 
 resource "aws_vpc" "my_vpc" {
   cidr_block = "172.16.0.0/16"
@@ -52,6 +53,7 @@ resource "aws_internet_gateway" "mygateway" {
 # Creating Route Table for Public Subnet
 resource "aws_route_table" "rt" {
     vpc_id = aws_vpc.my_vpc.id
+
     route = {
         cidr_block = "0.0.0.0/0"
         gateway_id = aws_internet_gateway.mygateway.id
