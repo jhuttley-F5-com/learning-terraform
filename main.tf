@@ -60,7 +60,7 @@ resource "aws_route_table" "rt" {
 }
 
 # Add route to route table. Cant do it in one or get Inappropriate value for attribute "route": set of object required.
-
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route
 resource "aws_route" "my_route" {
         destination_cidr_block = "0.0.0.0/0"
         route_table_id  = aws_route_table.rt.id
